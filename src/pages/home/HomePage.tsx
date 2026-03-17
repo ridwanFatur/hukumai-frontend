@@ -9,5 +9,7 @@ export default function HomePage() {
 }
 
 function _HomePage() {
-	return <div></div>
+	return <div>
+		Home Page
+	</div>
 }
