@@ -15,7 +15,7 @@ export default function MobileSidebar() {
 			{/* Sidebar panel */}
 			<div
 				className={`w-72 h-full bg-linear-to-b from-slate-950 to-slate-900
-			border-r border-white/5 flex flex-col gap-6 shadow-xl transform transition-transform duration-300 ease-in-out 
+			border-r border-white/5 flex flex-col shadow-xl transform transition-transform duration-300 ease-in-out 
 					${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
 					}`}
 			>
