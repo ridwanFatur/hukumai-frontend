@@ -2,20 +2,24 @@ import { useGlobal } from "@/global-context/global"
 import { Bot, Search } from "lucide-react"
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function TabsMenu() {
+interface TabsMenuProps {
+	alwaysOpen?: boolean;
+}
+
+export default function TabsMenu({ alwaysOpen = false }: TabsMenuProps) {
 	const { isSidebarOpen } = useGlobal()
 	const location = useLocation();
 	const navigate = useNavigate();
+	const open = alwaysOpen ? true : isSidebarOpen;
 
 	const tabs = [
 		{ name: "Chat", path: "/", Icon: Bot },
 		{ name: "Search", path: "/search", Icon: Search },
 	];
 
-
 	return <>
 		{/* Tabs — expanded */}
-		{isSidebarOpen && (
+		{open && (
 			<div className="flex bg-white/5 rounded-xl p-1 gap-1">
 				{tabs.map((tab) => {
 					const isActive = location.pathname === tab.path;
@@ -42,7 +46,7 @@ export default function TabsMenu() {
 		)}
 
 		{/* Tabs — collapsed */}
-		{!isSidebarOpen && (
+		{!open && (
 			<div className="flex flex-col items-center gap-1 w-full px-2">
 				{[
 					{ name: "chat", path: "/", Icon: Bot, title: "Chatbot" },
@@ -69,5 +73,6 @@ export default function TabsMenu() {
 					);
 				})}
 			</div>
-		)}</>
+		)}
+	</>
 }
