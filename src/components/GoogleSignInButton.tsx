@@ -31,8 +31,14 @@ export default function GoogleSignInButton() {
 			onClick={redirectToGoogleAuth}
 			className={clsx(
 				"w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl text-sm font-medium",
-				"bg-white text-gray-800 hover:bg-gray-100 active:bg-gray-200",
-				"transition-all duration-150 ease-in-out shadow-[0_1px_3px_rgba(0,0,0,0.4)] cursor-pointer"
+				// Dark base + subtle white shine on top edge
+				"bg-[#1c1c24] text-gray-100",
+				"border border-white/10",
+				"shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_2px_8px_rgba(0,0,0,0.5)]",
+				// Hover: lighten slightly, lift shadow
+				"hover:bg-[#22222e] hover:border-white/15 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_4px_16px_rgba(0,0,0,0.6)]",
+				"active:scale-[0.98] active:bg-[#18181f]",
+				"transition-all duration-150 ease-in-out cursor-pointer"
 			)}
 		>
 			<GoogleIcon />

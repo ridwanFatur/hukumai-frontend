@@ -81,12 +81,6 @@ export default function LoadingPage() {
 						{APP_NAME}
 					</p>
 					<div className="w-16 h-px bg-linear-to-r from-transparent via-indigo-500/30 to-transparent" />
-					<p
-						className="text-[0.6rem] tracking-[0.15em] text-indigo-500/55 font-light"
-					>
-						initializing
-						<span className="inline-block w-1 h-2.25 bg-indigo-500/60 ml-1 rounded-sm animate-pulse" />
-					</p>
 				</div>
 			</div>
 		</div>
