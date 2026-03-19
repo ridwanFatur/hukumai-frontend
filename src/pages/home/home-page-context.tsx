@@ -1,13 +1,33 @@
+import type { ChatMessage } from "@/models/ChatMessage";
 import {
 	createContext,
+	useCallback,
 	useContext,
+	useRef,
+	useState,
 	type ReactNode,
 } from "react"
 
 export function useHomePageState() {
-	return {
+	const [messages, setMessages] = useState<ChatMessage[]>([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const abortRef = useRef<AbortController | null>(null);
 
-	}
+	const sendMessage = useCallback(async (content: string) => {
+
+	}, [isLoading]);
+
+	const stopGeneration = useCallback(() => {
+		abortRef.current?.abort();
+		setIsLoading(false);
+	}, []);
+
+	return {
+		messages,
+		isLoading,
+		sendMessage,
+		stopGeneration,
+	};
 }
 
 type HomePageStateType = ReturnType<typeof useHomePageState>

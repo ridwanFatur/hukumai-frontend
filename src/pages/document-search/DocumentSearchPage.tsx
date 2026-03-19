@@ -13,12 +13,18 @@ export default function DocumentSearchPage() {
 function _DocumentSearchPage() {
 	const { setIsMobileSidebarOpen } = useGlobal();
 
-	return <div className="w-full h-full relative">
+	return <div className="w-full h-full relative bg-[#0e0e10] flex items-center justify-center">
+		{/* Mobile menu button */}
 		<button
-			className="md:hidden text-xl cursor-pointer transition p-4 absolute top-0 left-0 border border-white/30 rounded-md"
+			className="md:hidden text-white/60 hover:text-white cursor-pointer transition-all duration-200 p-3 absolute top-3 left-3 z-10 border border-white/10 hover:border-white/25 rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm"
 			onClick={() => setIsMobileSidebarOpen(true)}
 		>
-			<MenuIcon size={20} />
+			<MenuIcon size={18} />
 		</button>
+
+		{/* Coming Soon text */}
+		<div className="text-white/70 text-lg md:text-2xl font-semibold">
+			Coming Soon 🚧
+		</div>
 	</div>
 }
