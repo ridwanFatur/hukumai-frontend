@@ -5,7 +5,9 @@ import {
 } from "react"
 
 export function useHomePageState() {
-	return {}
+	return {
+
+	}
 }
 
 type HomePageStateType = ReturnType<typeof useHomePageState>

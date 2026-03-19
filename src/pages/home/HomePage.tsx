@@ -9,7 +9,7 @@ export default function HomePage() {
 }
 
 function _HomePage() {
-	return <div>
-		Home Page
+	return <div className="w-full h-full relative">
+		Home
 	</div>
 }
