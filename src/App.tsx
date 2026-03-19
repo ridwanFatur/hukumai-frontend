@@ -5,6 +5,7 @@ import GoogleAuthCallback from "./callbacks/GoogleAuthCallback"
 import LoginPage from "./pages/login/LoginPage"
 import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/home/HomePage"
+import DocumentSearchPage from "./pages/document-search/DocumentSearchPage"
 
 function App() {
 	const { isAppLoaded, user } = useGlobal()
@@ -30,6 +31,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<MainLayout />}>
 					<Route path="/" element={<HomePage />} />
+					<Route path="/search" element={<DocumentSearchPage />} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Route>
 			</Routes>
