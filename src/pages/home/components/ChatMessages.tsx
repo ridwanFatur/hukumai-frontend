@@ -32,7 +32,7 @@ function ChatBubble({ message }: { message: ChatMessage }) {
 	if (isUser) {
 		return (
 			<div className="flex justify-end">
-				<div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-br-sm bg-violet-600/80 border border-violet-500/30 text-white/90 text-sm leading-relaxed shadow-lg shadow-violet-900/20">
+				<div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-br-sm bg-violet-600/80 border border-violet-500/30 text-white/90 text-sm leading-relaxed shadow-lg shadow-violet-900/20 wrap-break-word">
 					{message.content}
 				</div>
 			</div>
@@ -61,7 +61,7 @@ function ChatBubble({ message }: { message: ChatMessage }) {
 
 			{/* Message */}
 			<div className="flex-1 min-w-0">
-				<p className="text-white/80 text-sm leading-relaxed whitespace-pre-wrap">
+				<p className="text-white/80 text-sm leading-relaxed whitespace-pre-wrap wrap-break-word bg-white/5 border border-white/10 rounded-xl px-3 py-2 shadow-sm shadow-black/20">
 					{message.content}
 				</p>
 			</div>

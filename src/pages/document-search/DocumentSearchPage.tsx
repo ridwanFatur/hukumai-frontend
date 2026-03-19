@@ -13,7 +13,7 @@ export default function DocumentSearchPage() {
 function _DocumentSearchPage() {
 	const { setIsMobileSidebarOpen } = useGlobal();
 
-	return <div className="w-full h-full relative bg-[#0e0e10] flex items-center justify-center">
+	return <div className="w-full h-full relative bg-linear-to-b from-slate-950 to-slate-900 border-l border-white/5 overflow-hidden flex items-center justify-center">
 		{/* Mobile menu button */}
 		<button
 			className="md:hidden text-white/60 hover:text-white cursor-pointer transition-all duration-200 p-3 absolute top-3 left-3 z-10 border border-white/10 hover:border-white/25 rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm"

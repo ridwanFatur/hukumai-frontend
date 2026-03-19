@@ -36,7 +36,7 @@ export default function ChatInput() {
 
 	return (
 		<div className="max-w-2xl mx-auto w-full">
-			<div className="relative flex items-end gap-2 bg-white/5 border border-white/10 hover:border-white/16 focus-within:border-violet-500/40 focus-within:bg-white/[0.07] rounded-2xl px-4 py-3 transition-all duration-200 shadow-xl shadow-black/30">
+			<div className="relative flex items-end gap-2 bg-white/5 border border-white/10 hover:border-white/20 focus-within:border-violet-500/40 focus-within:bg-white/10 rounded-2xl px-4 py-3 transition-all duration-200 shadow-black/20 shadow-lg">
 				{/* Textarea */}
 				<textarea
 					ref={textareaRef}
@@ -64,7 +64,7 @@ export default function ChatInput() {
 						className={`shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-150 cursor-pointer border
               ${canSend
 								? "bg-violet-600 hover:bg-violet-500 border-violet-500/50 text-white shadow-lg shadow-violet-900/30"
-								: "bg-white/4 border-white/[0.07] text-white/20 cursor-not-allowed"
+								: "bg-white/5 border-white/10 text-white/30 cursor-not-allowed"
 							}`}
 					>
 						<ArrowUpIcon size={15} strokeWidth={2.5} />
@@ -74,7 +74,8 @@ export default function ChatInput() {
 
 			{/* Footer hint */}
 			<p className="text-center text-white/15 text-[10px] mt-2 tracking-wide">
-				Press <span className="font-medium text-white/25">Enter</span> to send &nbsp;·&nbsp; <span className="font-medium text-white/25">Shift+Enter</span> for new line
+				Press <span className="font-medium text-white/25">Enter</span> to send &nbsp;·&nbsp;{" "}
+				<span className="font-medium text-white/25">Shift+Enter</span> for new line
 			</p>
 		</div>
 	);

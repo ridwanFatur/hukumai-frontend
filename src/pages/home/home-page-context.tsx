@@ -14,7 +14,7 @@ export function useHomePageState() {
 	const abortRef = useRef<AbortController | null>(null);
 
 	const sendMessage = useCallback(async (content: string) => {
-
+		if (content) { }
 	}, [isLoading]);
 
 	const stopGeneration = useCallback(() => {
@@ -26,6 +26,7 @@ export function useHomePageState() {
 		messages,
 		isLoading,
 		sendMessage,
+		setMessages,
 		stopGeneration,
 	};
 }

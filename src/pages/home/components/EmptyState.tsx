@@ -38,10 +38,10 @@ export default function EmptyState() {
 			</div>
 
 			<h1 className="text-white/90 text-2xl font-semibold tracking-tight mb-2 font-[system-ui]">
-				How can I help you?
+				Ask a Legal Question
 			</h1>
 			<p className="text-white/35 text-sm text-center max-w-xs leading-relaxed">
-				Ask me anything — I can help you write, analyze, code, or just have a conversation.
+				Consult about contracts, regulations, or legal procedures — I can provide guidance and clarify legal concepts.
 			</p>
 
 			{/* Suggestion chips */}
@@ -54,10 +54,10 @@ function SuggestionChips() {
 	const { sendMessage } = useHomePage();
 
 	const suggestions = [
-		{ icon: "✦", text: "Explain quantum computing" },
-		{ icon: "⌥", text: "Write a short story" },
-		{ icon: "◈", text: "Debug my code" },
-		{ icon: "◎", text: "Summarize an article" },
+		{ icon: "⚖", text: "Explain a contract clause" },
+		{ icon: "📝", text: "Draft a legal notice" },
+		{ icon: "🔍", text: "Summarize legal document" },
+		{ icon: "💡", text: "Legal advice on tenant rights" },
 	];
 
 	return (

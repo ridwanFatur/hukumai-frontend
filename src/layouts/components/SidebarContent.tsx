@@ -37,8 +37,8 @@ export default function SidebarContent({ alwaysOpen = false }: SidebarContentPro
 				isSidebarOpen={open}
 				onClick={() => setIsLogoutOpen(true)}
 				color={{
-					bg: "bg-gradient-to-r from-red-600 to-orange-500",
-					hover: "hover:from-red-500 hover:to-orange-400",
+					bg: "bg-red-500/90",
+					hover: "hover:bg-red-500",
 					shadow: "shadow-red-900/30",
 				}}
 			/>
