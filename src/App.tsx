@@ -3,9 +3,9 @@ import LoadingPage from "./components/LoadingPage"
 import { useGlobal } from "./global-context/global"
 import GoogleAuthCallback from "./callbacks/GoogleAuthCallback"
 import LoginPage from "./pages/login/LoginPage"
-import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/home/HomePage"
 import DocumentSearchPage from "./pages/document-search/DocumentSearchPage"
+import MainLayout from "./layouts/main/MainLayout"
 
 function App() {
 	const { isAppLoaded, user } = useGlobal()
