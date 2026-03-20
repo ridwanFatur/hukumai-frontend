@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { useHomePage } from "../home-page-context";
 
 export default function ChatMessages() {
-	const { isLoadingMessages, chatSession } = useHomePage();
+	const { isLoadingMessages, chatSession, thinkingText } = useHomePage();
 
 	const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +27,7 @@ export default function ChatMessages() {
 				{chatSession?.messages.map((msg) => (
 					<ChatBubble key={msg.id} message={msg} />
 				))}
-				{chatSession?.is_thinking && <TypingIndicator />}
+				{chatSession?.is_thinking && <TypingIndicator text={thinkingText} />}
 				<div ref={bottomRef} />
 			</div>
 		</div>
@@ -75,7 +75,7 @@ function ChatBubble({ message }: { message: ChatMessage }) {
 	);
 }
 
-function TypingIndicator() {
+function TypingIndicator({ text }: { text?: string }) {
 	return (
 		<div className="flex gap-3 items-start">
 			<div className="shrink-0 mt-0.5">
@@ -94,14 +94,27 @@ function TypingIndicator() {
 					</svg>
 				</div>
 			</div>
-			<div className="flex items-center gap-1.5 h-7">
-				{[0, 1, 2].map((i) => (
-					<span
-						key={i}
-						className="w-1.5 h-1.5 rounded-full bg-white/30 animate-bounce"
-						style={{ animationDelay: `${i * 0.15}s`, animationDuration: "0.9s" }}
-					/>
-				))}
+
+			<div className="flex flex-col gap-1">
+				<div className="flex items-center gap-1.5 h-7">
+					{[0, 1, 2].map((i) => (
+						<span
+							key={i}
+							className="w-1.5 h-1.5 rounded-full bg-white/30 animate-bounce"
+							style={{
+								animationDelay: `${i * 0.15}s`,
+								animationDuration: "0.9s",
+							}}
+						/>
+					))}
+				</div>
+
+				{/* hanya tampil kalau text ada */}
+				{text && (
+					<span className="text-xs text-white/40">
+						{text}
+					</span>
+				)}
 			</div>
 		</div>
 	);

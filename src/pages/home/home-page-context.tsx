@@ -20,6 +20,7 @@ export function useHomePageState() {
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
 	const [isLoadingMessages, setIsLoadingMessages] = useState(false);
 	const [chatSession, setChatSession] = useState<ChatSessionDetail>()
+	const [thinkingText, setThinkingText] = useState<string | undefined>()
 	const { user } = useGlobal()
 
 	async function loadChatDetail() {
@@ -197,6 +198,9 @@ export function useHomePageState() {
 						],
 					}
 				})
+			} else if (payload?.action == "update_thinking") {
+				console.log(payload)
+				setThinkingText(payload?.text)
 			}
 		} catch (error) {
 			console.error("Invalid JSON payload:", event.data)
@@ -213,7 +217,9 @@ export function useHomePageState() {
 		setValue,
 		isLoadingMessages,
 		setIsLoadingMessages,
-		chatSession
+		chatSession,
+		thinkingText,
+		setThinkingText
 	};
 }
 
