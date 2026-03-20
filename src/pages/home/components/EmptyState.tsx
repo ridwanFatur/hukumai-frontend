@@ -1,5 +1,3 @@
-import { useHomePage } from "../home-page-context";
-
 export default function EmptyState() {
 	return (
 		<div className="flex-1 flex flex-col items-center justify-center px-6 select-none">
@@ -41,38 +39,6 @@ export default function EmptyState() {
 			<p className="text-white/35 text-sm text-center max-w-xs leading-relaxed">
 				Consult about contracts, regulations, or legal procedures — I can provide guidance and clarify legal concepts.
 			</p>
-
-			<SuggestionChips />
-		</div>
-	);
-}
-
-function SuggestionChips() {
-	const { sendMessage } = useHomePage();
-
-	const suggestions = [
-		{ icon: "⚖", text: "Explain a contract clause" },
-		{ icon: "📝", text: "Draft a legal notice" },
-		{ icon: "🔍", text: "Summarize legal document" },
-		{ icon: "💡", text: "Legal advice on tenant rights" },
-	];
-
-	return (
-		<div className="mt-8 grid grid-cols-2 gap-2 w-full max-w-sm">
-			{suggestions.map((s) => (
-				<button
-					key={s.text}
-					onClick={() => sendMessage(s.text)}
-					className="group flex items-start gap-2.5 px-3.5 py-3 rounded-xl bg-white/4 hover:bg-white/8 border border-white/[0.07] hover:border-white/[0.14] text-left transition-all duration-200 cursor-pointer"
-				>
-					<span className="text-violet-400/70 text-sm mt-0.5 shrink-0 group-hover:text-violet-400 transition-colors">
-						{s.icon}
-					</span>
-					<span className="text-white/50 text-xs leading-snug group-hover:text-white/70 transition-colors">
-						{s.text}
-					</span>
-				</button>
-			))}
 		</div>
 	);
 }

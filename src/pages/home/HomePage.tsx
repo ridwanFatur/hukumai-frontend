@@ -1,9 +1,10 @@
 import { useGlobal } from "@/global-context/global";
-import HomePageProvider, { useHomePage } from "./home-page-context"
+import HomePageProvider from "./home-page-context"
 import { MenuIcon } from "lucide-react";
 import EmptyState from "./components/EmptyState";
 import ChatInput from "./components/ChatInput";
 import ChatMessages from "./components/ChatMessages";
+import { useMainLayout } from "@/layouts/main/main-layout-context";
 
 export default function HomePage() {
 	return (
@@ -14,9 +15,7 @@ export default function HomePage() {
 }
 function _HomePage() {
 	const { setIsMobileSidebarOpen } = useGlobal();
-	const { messages, isLoading } = useHomePage();
-
-	const isEmpty = messages.length === 0;
+	const { chatbot } = useMainLayout()
 
 	return (
 		<div className="w-full h-full relative flex flex-col bg-linear-to-b from-slate-950 to-slate-900 border-l border-white/5 overflow-hidden">
@@ -28,10 +27,10 @@ function _HomePage() {
 			</button>
 
 			<div className="flex-1 flex flex-col min-h-0">
-				{isEmpty ? (
+				{!chatbot.activeHistoryId ? (
 					<EmptyState />
 				) : (
-					<ChatMessages messages={messages} isLoading={isLoading} />
+					<ChatMessages />
 				)}
 			</div>
 

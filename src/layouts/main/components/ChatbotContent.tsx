@@ -14,7 +14,7 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 				text="New Chat"
 				Icon={Plus}
 				isSidebarOpen={open}
-				onClick={() => console.log("New Chat clicked")}
+				onClick={() => chatbot.setActiveHistoryId(undefined)}
 				className="bg-linear-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-violet-900/30"
 			/>
 

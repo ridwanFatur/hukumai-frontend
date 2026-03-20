@@ -1,11 +1,17 @@
-import { useRef, useState, useEffect } from "react";
-import { ArrowUpIcon, SquareIcon } from "lucide-react";
+import { useEffect } from "react";
+import { ArrowUpIcon, Loader2 } from "lucide-react";
 import { useHomePage } from "../home-page-context";
 
 export default function ChatInput() {
-	const { sendMessage, isLoading, stopGeneration } = useHomePage();
-	const [value, setValue] = useState("");
-	const textareaRef = useRef<HTMLTextAreaElement>(null);
+	const {
+		sendMessage,
+		isLoading,
+		isLoadingMessages,
+		textareaRef,
+		value,
+		setValue,
+		chatSession
+	} = useHomePage();
 
 	useEffect(() => {
 		const el = textareaRef.current;
@@ -14,14 +20,15 @@ export default function ChatInput() {
 		el.style.height = Math.min(el.scrollHeight, 180) + "px";
 	}, [value]);
 
+	const canSend = value.trim().length > 0 && !isLoading && !isLoadingMessages
+		&& (chatSession == undefined || !chatSession.is_thinking);
+
 	const handleSend = () => {
+		if (!canSend) return
+
 		const trimmed = value.trim();
 		if (!trimmed || isLoading) return;
 		sendMessage(trimmed);
-		setValue("");
-		if (textareaRef.current) {
-			textareaRef.current.style.height = "auto";
-		}
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -30,8 +37,6 @@ export default function ChatInput() {
 			handleSend();
 		}
 	};
-
-	const canSend = value.trim().length > 0 && !isLoading;
 
 	return (
 		<div className="max-w-2xl mx-auto w-full">
@@ -49,10 +54,10 @@ export default function ChatInput() {
 
 				{isLoading ? (
 					<button
-						onClick={stopGeneration}
-						className="shrink-0 w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/20 flex items-center justify-center text-white/60 hover:text-white transition-all duration-150 cursor-pointer"
+						disabled
+						className="shrink-0 w-8 h-8 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-white/40 cursor-not-allowed"
 					>
-						<SquareIcon size={12} fill="currentColor" />
+						<Loader2 size={15} className="animate-spin" />
 					</button>
 				) : (
 					<button

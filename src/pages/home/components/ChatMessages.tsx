@@ -1,25 +1,33 @@
 import type { ChatMessage } from "@/models/ChatMessage";
 import { useEffect, useRef } from "react";
+import { useHomePage } from "../home-page-context";
 
-interface ChatMessagesProps {
-	messages: ChatMessage[];
-	isLoading: boolean;
-}
+export default function ChatMessages() {
+	const { isLoadingMessages, chatSession } = useHomePage();
 
-export default function ChatMessages({ messages, isLoading }: ChatMessagesProps) {
 	const bottomRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-	}, [messages, isLoading]);
+		if (chatSession && bottomRef.current) {
+			bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+		}
+	}, []);
+
+	if (isLoadingMessages) {
+		return (
+			<div className="flex-1 flex items-center justify-center text-white/60">
+				Loading messages...
+			</div>
+		);
+	}
 
 	return (
 		<div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent px-4 pt-16 md:pt-6 pb-2">
 			<div className="max-w-2xl mx-auto flex flex-col gap-6">
-				{messages.map((msg) => (
+				{chatSession?.messages.map((msg) => (
 					<ChatBubble key={msg.id} message={msg} />
 				))}
-				{isLoading && <TypingIndicator />}
+				{chatSession?.is_thinking && <TypingIndicator />}
 				<div ref={bottomRef} />
 			</div>
 		</div>
