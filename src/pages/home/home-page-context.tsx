@@ -202,7 +202,9 @@ export function useHomePageState() {
 				})
 			} else if (payload?.action == "update_thinking") {
 				console.log(payload)
-				if (chatSession && chatSession?.id == payload?.session_id) {
+				console.log(chatbot.activeHistoryIdRef.current)
+
+				if (chatbot.activeHistoryIdRef.current == payload?.session_id) {
 					setThinkingText(payload?.text)
 				}
 			}

@@ -1,12 +1,17 @@
 import { getChatSessionsApi } from "@/api/chat-session-api"
 import type { ChatSession } from "@/models/ChatSession"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export function useChatbotState() {
 	const [searchHistory, setSearchHistory] = useState("")
 	const [activeHistoryId, setActiveHistoryId] = useState<number>()
+	const activeHistoryIdRef = useRef<number | undefined>(activeHistoryId);
 	const [chatSessions, setChatSessions] = useState<ChatSession[]>([])
 	const [loading, setLoading] = useState(false)
+
+	useEffect(() => {
+		activeHistoryIdRef.current = activeHistoryId;
+	}, [activeHistoryId]);
 
 	async function loadChatSessions(keyword: string = searchHistory) {
 		setLoading(true)
@@ -43,6 +48,7 @@ export function useChatbotState() {
 		setChatSessions,
 		loading,
 		addChatSession,
-		loadChatSessions
+		loadChatSessions,
+		activeHistoryIdRef
 	}
 }
