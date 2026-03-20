@@ -22,6 +22,7 @@ export function useHomePageState() {
 	const [chatSession, setChatSession] = useState<ChatSessionDetail>()
 	const [thinkingText, setThinkingText] = useState<string | undefined>()
 	const { user } = useGlobal()
+	const bottomRef = useRef<HTMLDivElement>(null);
 
 	async function loadChatDetail() {
 		if (!chatbot.activeHistoryId) return
@@ -222,7 +223,8 @@ export function useHomePageState() {
 		setIsLoadingMessages,
 		chatSession,
 		thinkingText,
-		setThinkingText
+		setThinkingText,
+		bottomRef
 	};
 }
 

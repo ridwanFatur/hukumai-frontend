@@ -1,17 +1,9 @@
 import type { ChatMessage } from "@/models/ChatMessage";
-import { useEffect, useRef } from "react";
 import { useHomePage } from "../home-page-context";
+import { useEffect } from "react";
 
 export default function ChatMessages() {
-	const { isLoadingMessages, chatSession, thinkingText } = useHomePage();
-
-	const bottomRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (chatSession && bottomRef.current) {
-			bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-		}
-	}, []);
+	const { isLoadingMessages, chatSession, thinkingText, bottomRef } = useHomePage();
 
 	if (isLoadingMessages) {
 		return (
@@ -20,6 +12,12 @@ export default function ChatMessages() {
 			</div>
 		);
 	}
+
+	useEffect(() => {
+		if (chatSession && bottomRef.current) {
+			bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+		}
+	}, []);
 
 	return (
 		<div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent px-4 pt-16 md:pt-6 pb-2">
