@@ -4,7 +4,7 @@ import MenuButton from "./MenuButton";
 import { useMainLayout } from "../main-layout-context";
 
 export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boolean }) {
-	const { isSidebarOpen } = useGlobal()
+	const { isSidebarOpen, setIsMobileSidebarOpen } = useGlobal()
 	const { chatbot } = useMainLayout()
 	const open = alwaysOpen ? true : isSidebarOpen;
 
@@ -14,7 +14,10 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 				text="New Chat"
 				Icon={Plus}
 				isSidebarOpen={open}
-				onClick={() => chatbot.setActiveHistoryId(undefined)}
+				onClick={() => {
+					chatbot.setActiveHistoryId(undefined)
+					setIsMobileSidebarOpen(false)
+				}}
 				className="bg-linear-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-violet-900/30"
 			/>
 
@@ -51,7 +54,10 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 						{!chatbot.loading && chatbot.chatSessions.map(item => (
 							<button
 								key={item.id}
-								onClick={() => chatbot.setActiveHistoryId(item.id)}
+								onClick={() => {
+									chatbot.setActiveHistoryId(item.id)
+									setIsMobileSidebarOpen(false)
+								}}
 								className={`
 							cursor-pointer
 							w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-left text-xs transition-all duration-150
