@@ -41,40 +41,43 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 		</div>
 
 		<div className="flex-1 overflow-y-auto overflow-x-hidden space-y-4 pr-0.5">
-			{
-				open && <>
-					<div>
-						<div className="space-y-0.5">
-							{chatbot.chatSessions.map(item => (
-								<button
-									key={item.id}
-									onClick={() => chatbot.setActiveHistoryId(item.id)}
-									className={`
-												w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-left text-xs transition-all duration-150
-												${chatbot.activeHistoryId === item.id
-											? "bg-violet-600/15 text-violet-300 ring-1 ring-violet-500/20"
-											: "text-slate-500 hover:bg-white/5 hover:text-slate-300"
-										}
-											`}
-								>
-									<span className="shrink-0 opacity-60">
-										<MessageSquare size={24} />
-									</span>
-									<span className="truncate leading-snug">
-										{item.title}
-									</span>
-								</button>
-							))}
-						</div>
-					</div>
-					{chatbot.chatSessions.length === 0 && (
-						<p className="text-center text-slate-600 text-xs mt-8">
-							No results found
-						</p>
+			{open && (
+				<>
+					{chatbot.loading && (
+						<p className="text-center text-slate-500 text-xs mt-8">Loading...</p>
 					)}
-				</>
-			}
 
+					<div className="space-y-0.5">
+						{!chatbot.loading && chatbot.chatSessions.map(item => (
+							<button
+								key={item.id}
+								onClick={() => chatbot.setActiveHistoryId(item.id)}
+								className={`
+							cursor-pointer
+							w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-left text-xs transition-all duration-150
+							${chatbot.activeHistoryId === item.id
+										? "bg-violet-600/15 text-violet-300 ring-1 ring-violet-500/20"
+										: "text-slate-500 hover:bg-white/5 hover:text-slate-300"
+									}
+						`}
+							>
+								<span className="shrink-0 opacity-60">
+									<MessageSquare size={24} />
+								</span>
+								<span className="truncate leading-snug">
+									{item.title}
+								</span>
+							</button>
+						))}
+
+						{!chatbot.loading && chatbot.chatSessions.length === 0 && (
+							<p className="text-center text-slate-600 text-xs mt-8">
+								No results found
+							</p>
+						)}
+					</div>
+				</>
+			)}
 		</div>
 	</>
 }
