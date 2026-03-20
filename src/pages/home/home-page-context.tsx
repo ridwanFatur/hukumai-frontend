@@ -39,6 +39,7 @@ export function useHomePageState() {
 	}
 
 	useEffect(() => {
+		setThinkingText(undefined)
 		if (chatbot.activeHistoryId) {
 			loadChatDetail();
 		} else {
@@ -200,7 +201,9 @@ export function useHomePageState() {
 				})
 			} else if (payload?.action == "update_thinking") {
 				console.log(payload)
-				setThinkingText(payload?.text)
+				if (chatSession && chatSession?.id == payload?.session_id) {
+					setThinkingText(payload?.text)
+				}
 			}
 		} catch (error) {
 			console.error("Invalid JSON payload:", event.data)
