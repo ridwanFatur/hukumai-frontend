@@ -109,7 +109,6 @@ function TypingIndicator({ text }: { text?: string }) {
 					))}
 				</div>
 
-				{/* hanya tampil kalau text ada */}
 				{text && (
 					<span className="text-xs text-white/40">
 						{text}

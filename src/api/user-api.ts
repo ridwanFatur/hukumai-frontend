@@ -6,3 +6,11 @@ export const getUserApi = async (): Promise<{ user: User }> => {
 	const response = await axiosClient.get(`${ENDPOINT.user}/`).then((res) => res.data);
 	return response;
 }
+
+export const getUserTokenApi = async (): Promise<{ total_tokens: number, updated_at?: string }> => {
+	const response = await axiosClient
+		.get(`${ENDPOINT.user}/token`)
+		.then(res => res.data);
+
+	return response;
+};
