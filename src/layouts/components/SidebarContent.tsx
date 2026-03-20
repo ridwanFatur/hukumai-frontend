@@ -36,11 +36,7 @@ export default function SidebarContent({ alwaysOpen = false }: SidebarContentPro
 				Icon={LogOut}
 				isSidebarOpen={open}
 				onClick={() => setIsLogoutOpen(true)}
-				color={{
-					bg: "bg-red-500/90",
-					hover: "hover:bg-red-500",
-					shadow: "shadow-red-900/30",
-				}}
+				className="bg-red-500/90 hover:bg-red-500 shadow-red-900/30"
 			/>
 		</div>
 	</>

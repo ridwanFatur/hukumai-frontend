@@ -2,11 +2,7 @@ import { type LucideIcon } from "lucide-react"
 interface MenuButtonProps {
 	text?: string;
 	Icon?: LucideIcon;
-	color?: {
-		bg: string;
-		hover: string;
-		shadow: string;
-	};
+	className?: string;
 	isSidebarOpen?: boolean;
 	onClick?: () => void;
 	size?: number;
@@ -15,11 +11,7 @@ interface MenuButtonProps {
 export default function MenuButton({
 	text,
 	Icon,
-	color = {
-		bg: "bg-gradient-to-r from-violet-600 to-indigo-600",
-		hover: "hover:from-violet-500 hover:to-indigo-500",
-		shadow: "shadow-violet-900/30",
-	},
+	className = "bg-linear-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-violet-900/30",
 	isSidebarOpen = true,
 	onClick,
 	size = 20,
@@ -32,11 +24,10 @@ export default function MenuButton({
         cursor-pointer flex items-center justify-center gap-2
         ${isSidebarOpen ? "w-full py-2 px-3.5" : "w-9 h-9"}
         rounded-xl
-        ${color.bg}
-        ${color.hover}
         text-white text-xs font-semibold
-        shadow-md ${color.shadow}
+        shadow-md
         transition-all duration-200 active:scale-95
+				${className} 
       `}
 		>
 			{Icon && <Icon size={size} />}

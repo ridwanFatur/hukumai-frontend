@@ -13,11 +13,7 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 				Icon={Plus}
 				isSidebarOpen={open}
 				onClick={() => console.log("New Chat clicked")}
-				color={{
-					bg: "bg-gradient-to-r from-violet-600 to-indigo-600",
-					hover: "hover:from-violet-500 hover:to-indigo-500",
-					shadow: "shadow-violet-900/30",
-				}}
+				className="bg-linear-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-violet-900/30"
 			/>
 
 			{open && (
@@ -46,9 +42,6 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 			{
 				open && <>
 					<div>
-						{/* <p className="text-slate-700 text-[10px] font-bold tracking-wider uppercase mb-1 px-1">
-						{group.label}
-					</p> */}
 						<div className="space-y-0.5">
 							{chatbot.chatSessions.map(item => (
 								<button
