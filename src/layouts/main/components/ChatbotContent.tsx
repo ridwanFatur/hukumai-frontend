@@ -1,9 +1,11 @@
 import { useGlobal } from "@/global-context/global"
 import { MessageSquare, Plus, Search } from "lucide-react"
 import MenuButton from "./MenuButton";
+import { useMainLayout } from "../main-layout-context";
 
 export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boolean }) {
-	const { isSidebarOpen, chatbot } = useGlobal()
+	const { isSidebarOpen } = useGlobal()
+	const { chatbot } = useMainLayout()
 	const open = alwaysOpen ? true : isSidebarOpen;
 
 	return <>

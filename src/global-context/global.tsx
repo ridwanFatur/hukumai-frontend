@@ -2,8 +2,6 @@ import { getUserApi } from "@/api/user-api";
 import type { User } from "@/models/User";
 import { getCookie, removeCookie } from "@/utils/cookie-helper";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
-import { useChatbotState } from "./chat-bot";
-import { useDocumentSearchState } from "./document-search";
 
 export function useGlobalState() {
 	const [isAppLoaded, setIsAppLoaded] = useState(false);
@@ -11,8 +9,7 @@ export function useGlobalState() {
 	const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 	const [isLogoutOpen, setIsLogoutOpen] = useState(false);
-	const chatbot = useChatbotState()
-	const documentSearch = useDocumentSearchState()
+
 
 	async function checkAuth() {
 		const token = getCookie("token");
@@ -59,8 +56,7 @@ export function useGlobalState() {
 		handleLogout,
 		isSidebarOpen,
 		setIsSidebarOpen,
-		chatbot,
-		documentSearch,
+
 	}
 }
 
