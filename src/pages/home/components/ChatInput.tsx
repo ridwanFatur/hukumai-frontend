@@ -7,7 +7,6 @@ export default function ChatInput() {
 	const [value, setValue] = useState("");
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-	// Auto-resize textarea
 	useEffect(() => {
 		const el = textareaRef.current;
 		if (!el) return;
@@ -37,7 +36,6 @@ export default function ChatInput() {
 	return (
 		<div className="max-w-2xl mx-auto w-full">
 			<div className="relative flex items-end gap-2 bg-white/5 border border-white/10 hover:border-white/20 focus-within:border-violet-500/40 focus-within:bg-white/10 rounded-2xl px-4 py-3 transition-all duration-200 shadow-black/20 shadow-lg">
-				{/* Textarea */}
 				<textarea
 					ref={textareaRef}
 					value={value}
@@ -49,7 +47,6 @@ export default function ChatInput() {
 					disabled={isLoading}
 				/>
 
-				{/* Action button */}
 				{isLoading ? (
 					<button
 						onClick={stopGeneration}
@@ -72,7 +69,6 @@ export default function ChatInput() {
 				)}
 			</div>
 
-			{/* Footer hint */}
 			<p className="text-center text-white/15 text-[10px] mt-2 tracking-wide">
 				Press <span className="font-medium text-white/25">Enter</span> to send &nbsp;·&nbsp;{" "}
 				<span className="font-medium text-white/25">Shift+Enter</span> for new line

@@ -15,18 +15,14 @@ export default function LogoutDialog({
 
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center">
-			{/* Overlay */}
 			<div
 				className="absolute inset-0 bg-black/70 backdrop-blur-md"
 				onClick={onCancel}
 			/>
 
-			{/* Dialog box */}
 			<div className="relative w-[90%] max-w-md rounded-2xl p-6 border border-white/10 bg-zinc-900/90 shadow-[0_0_40px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-				{/* Top accent line */}
 				<div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-white/20 to-transparent rounded-full" />
 
-				{/* Icon */}
 				<div className="mb-4 flex items-center justify-center w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 text-white">
 					<LogOut size={20} />
 				</div>

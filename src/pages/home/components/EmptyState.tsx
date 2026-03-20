@@ -3,7 +3,6 @@ import { useHomePage } from "../home-page-context";
 export default function EmptyState() {
 	return (
 		<div className="flex-1 flex flex-col items-center justify-center px-6 select-none">
-			{/* Logo / Icon */}
 			<div className="mb-6 relative">
 				<div className="w-14 h-14 rounded-2xl bg-linear-to-br from-violet-500/30 to-indigo-500/10 border border-violet-500/20 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.15)]">
 					<svg
@@ -33,7 +32,6 @@ export default function EmptyState() {
 						</defs>
 					</svg>
 				</div>
-				{/* Glow ring */}
 				<div className="absolute inset-0 rounded-2xl bg-violet-500/5 blur-xl scale-150 -z-10" />
 			</div>
 
@@ -44,7 +42,6 @@ export default function EmptyState() {
 				Consult about contracts, regulations, or legal procedures — I can provide guidance and clarify legal concepts.
 			</p>
 
-			{/* Suggestion chips */}
 			<SuggestionChips />
 		</div>
 	);

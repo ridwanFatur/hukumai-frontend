@@ -12,7 +12,6 @@ export default function MobileSidebar() {
 				: "opacity-0 pointer-events-none"
 				}`}
 		>
-			{/* Sidebar panel */}
 			<div
 				className={`w-72 h-full bg-linear-to-b from-slate-950 to-slate-900
 			border-r border-white/5 flex flex-col shadow-xl transform transition-transform duration-300 ease-in-out 
@@ -29,7 +28,6 @@ export default function MobileSidebar() {
 				<SidebarContent alwaysOpen={true} />
 			</div>
 
-			{/* Overlay */}
 			<div
 				className="flex-1 transition-opacity duration-300 bg-black/30"
 				onClick={() => setIsMobileSidebarOpen(false)}

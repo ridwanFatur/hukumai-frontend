@@ -41,7 +41,6 @@ function ChatBubble({ message }: { message: ChatMessage }) {
 
 	return (
 		<div className="flex gap-3 items-start">
-			{/* Avatar */}
 			<div className="shrink-0 mt-0.5">
 				<div className="w-7 h-7 rounded-lg bg-linear-to-br from-violet-500/40 to-indigo-600/40 border border-violet-500/20 flex items-center justify-center">
 					<svg width="14" height="14" viewBox="0 0 28 28" fill="none">
@@ -59,7 +58,6 @@ function ChatBubble({ message }: { message: ChatMessage }) {
 				</div>
 			</div>
 
-			{/* Message */}
 			<div className="flex-1 min-w-0">
 				<p className="text-white/80 text-sm leading-relaxed whitespace-pre-wrap wrap-break-word bg-white/5 border border-white/10 rounded-xl px-3 py-2 shadow-sm shadow-black/20">
 					{message.content}

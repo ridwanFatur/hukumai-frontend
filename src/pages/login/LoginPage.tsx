@@ -7,16 +7,11 @@ export default function LoginPage() {
 			className="min-h-screen bg-[#0a0a0f] flex items-center justify-center px-6 relative overflow-hidden"
 			style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
 		>
-			{/* ── Ambient glow layers ── */}
 			<div className="absolute inset-0 pointer-events-none">
-				{/* Top-center indigo glow */}
 				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-85 bg-indigo-600/15 rounded-full blur-[120px]" />
-				{/* Bottom-left purple accent */}
 				<div className="absolute bottom-0 left-0 w-95 h-65 bg-violet-700/10 rounded-full blur-[100px]" />
-				{/* Bottom-right subtle highlight */}
 				<div className="absolute bottom-1/4 right-0 w-65 h-50 bg-blue-500/8 rounded-full blur-[90px]" />
 
-				{/* Subtle dot-grid texture */}
 				<div
 					className="absolute inset-0 opacity-[0.035]"
 					style={{
@@ -27,20 +22,16 @@ export default function LoginPage() {
 				/>
 			</div>
 
-			{/* ── Main card ── */}
 			<div className="relative w-full max-w-md flex flex-col items-center gap-6">
 
-				{/* App name badge */}
 				<div className="flex items-center gap-2">
 					<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 text-xs font-semibold tracking-widest uppercase">
 						{APP_NAME}
 					</span>
 				</div>
 
-				{/* Glass card */}
 				<div className="w-full rounded-2xl border border-white/[0.07] bg-white/3 backdrop-blur-2xl p-8 shadow-2xl shadow-black/60 flex flex-col gap-6">
 
-					{/* Heading */}
 					<div className="text-center">
 						<h1 className="text-white text-2xl font-semibold tracking-tight">
 							Welcome to Hukum AI
@@ -50,7 +41,6 @@ export default function LoginPage() {
 						</p>
 					</div>
 
-					{/* Feature pills */}
 					<div className="grid grid-cols-2 gap-2">
 						{[
 							{ icon: "⚖️", label: "AI Legal Chatbot" },
@@ -68,18 +58,15 @@ export default function LoginPage() {
 						))}
 					</div>
 
-					{/* Divider */}
 					<div className="relative flex items-center gap-3">
 						<div className="flex-1 h-px bg-white/10" />
 						<span className="text-gray-600 text-xs">Sign In to Continue</span>
 						<div className="flex-1 h-px bg-white/10" />
 					</div>
 
-					{/* Google Sign In */}
 					<GoogleSignInButton />
 				</div>
 
-				{/* Footer */}
 				<p className="text-gray-600 text-xs text-center">
 					© {new Date().getFullYear()} {APP_NAME}. All rights reserved.
 				</p>

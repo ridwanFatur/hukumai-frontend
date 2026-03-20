@@ -14,7 +14,6 @@ export default function Sidebar() {
 			overflow-hidden
 		`}>
 
-		{/* Toggle Button — top right */}
 		<button
 			onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 			title={isSidebarOpen ? "Collapse" : "Expand"}

@@ -18,7 +18,6 @@ export default function TabsMenu({ alwaysOpen = false }: TabsMenuProps) {
 	];
 
 	return <>
-		{/* Tabs — expanded */}
 		{open && (
 			<div className="flex bg-white/5 rounded-xl p-1 gap-1">
 				{tabs.map((tab) => {
@@ -45,7 +44,6 @@ export default function TabsMenu({ alwaysOpen = false }: TabsMenuProps) {
 			</div>
 		)}
 
-		{/* Tabs — collapsed */}
 		{!open && (
 			<div className="flex flex-col items-center gap-1 w-full px-2">
 				{[

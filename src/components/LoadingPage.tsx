@@ -4,14 +4,12 @@ export default function LoadingPage() {
 	return (
 		<div className="h-dvh flex items-center justify-center bg-[#080b14] relative overflow-hidden">
 
-			{/* Gradient mesh background */}
 			<div className="absolute inset-0 pointer-events-none">
 				<div className="absolute top-1/5 left-1/2 -translate-x-1/2 w-150 h-100 bg-indigo-500/10 rounded-full blur-[120px]" />
 				<div className="absolute bottom-1/4 left-1/5 w-64 h-64 bg-violet-500/8 rounded-full blur-[100px]" />
 				<div className="absolute top-2/3 right-1/4 w-48 h-48 bg-blue-500/6 rounded-full blur-[90px]" />
 			</div>
 
-			{/* Subtle grid overlay */}
 			<div
 				className="absolute inset-0 pointer-events-none opacity-100"
 				style={{
@@ -25,7 +23,6 @@ export default function LoadingPage() {
 				}}
 			/>
 
-			{/* Noise texture */}
 			<div
 				className="absolute inset-0 pointer-events-none opacity-[0.025]"
 				style={{
@@ -34,16 +31,10 @@ export default function LoadingPage() {
 				}}
 			/>
 
-			{/* Main content */}
 			<div className="relative flex flex-col items-center gap-7">
-
-				{/* Spinner ring system */}
 				<div className="relative w-20 h-20">
-					{/* Outer decorative ring */}
 					<div className="absolute inset-0 rounded-full border border-indigo-500/15 animate-pulse" />
 					<div className="absolute -inset-1.5 rounded-full border border-indigo-500/7 animate-pulse [animation-direction:reverse]" />
-
-					{/* Outer spinner */}
 					<div
 						className="absolute inset-0 rounded-full animate-spin"
 						style={{
@@ -56,8 +47,6 @@ export default function LoadingPage() {
 								"0 0 18px rgba(99,102,241,0.35), inset 0 0 8px rgba(99,102,241,0.05)",
 						}}
 					/>
-
-					{/* Inner spinner (reverse) */}
 					<div
 						className="absolute inset-2.5 rounded-full animate-spin"
 						style={{
@@ -68,12 +57,9 @@ export default function LoadingPage() {
 							animationTimingFunction: "cubic-bezier(0.4,0,0.2,1)",
 						}}
 					/>
-
-					{/* Center dot */}
 					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse [box-shadow:0_0_10px_rgba(129,140,248,0.8)]" />
 				</div>
 
-				{/* Text */}
 				<div className="flex flex-col items-center gap-2">
 					<p
 						className="text-[0.8rem] font-bold tracking-[0.2em] uppercase text-indigo-200/80"
