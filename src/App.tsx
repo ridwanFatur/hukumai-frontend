@@ -6,6 +6,7 @@ import LoginPage from "./pages/login/LoginPage"
 import HomePage from "./pages/home/HomePage"
 import DocumentSearchPage from "./pages/document-search/DocumentSearchPage"
 import MainLayout from "./layouts/main/MainLayout"
+import ProfilePage from "./pages/profile/ProfilePage"
 
 function App() {
 	const { isAppLoaded, user } = useGlobal()
@@ -32,6 +33,7 @@ function App() {
 				<Route path="/" element={<MainLayout />}>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/search" element={<DocumentSearchPage />} />
+					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Route>
 			</Routes>
