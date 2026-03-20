@@ -1,5 +1,5 @@
 import { useGlobal } from "@/global-context/global"
-import { MessageSquare, Plus, Search } from "lucide-react"
+import { Plus, Search } from "lucide-react"
 import MenuButton from "./MenuButton";
 import { useMainLayout } from "../main-layout-context";
 
@@ -36,7 +36,7 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 						/>
 					</div>
 
-					<p className="text-slate-600 text-[10px] font-bold tracking-widest uppercase px-1">
+					<p className="text-slate-600 text-[10px] font-bold tracking-widest uppercase px-1 mb-2">
 						History
 					</p>
 				</div>
@@ -67,9 +67,6 @@ export default function ChatbotContent({ alwaysOpen = false }: { alwaysOpen: boo
 									}
 						`}
 							>
-								<span className="shrink-0 opacity-60">
-									<MessageSquare size={24} />
-								</span>
 								<span className="truncate leading-snug">
 									{item.title}
 								</span>
