@@ -17,7 +17,7 @@ export default function ChatMessages() {
 		if (chatSession && bottomRef.current) {
 			bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 		}
-	}, []);
+	}, [chatSession?.messages]);
 
 	return (
 		<div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent px-4 pt-16 md:pt-6 pb-2">
