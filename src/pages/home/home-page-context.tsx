@@ -12,6 +12,7 @@ import {
 } from "react"
 import { ENDPOINT, WS_URL } from "@/utils/api-constants"
 import { getCookie } from "@/utils/cookie-helper"
+import { useToast } from "@/global-context/toast";
 
 export function useHomePageState() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,7 @@ export function useHomePageState() {
 	const [thinkingText, setThinkingText] = useState<string | undefined>()
 	const { user } = useGlobal()
 	const bottomRef = useRef<HTMLDivElement>(null);
+	const { toast } = useToast();
 
 	async function loadChatDetail() {
 		if (!chatbot.activeHistoryId) return
@@ -56,11 +58,25 @@ export function useHomePageState() {
 			chatbot.setActiveHistoryId(result.id)
 			cleanTextInput()
 
-		} catch {
+		} catch (e: any) {
+			let errorCode = "default"
+			try {
+				errorCode = e.response.data.detail.error_code
+			} catch {
 
+			}
+
+			if (errorCode == 'insufficient_tokens') {
+				toast({
+					title: "Insufficient Tokens",
+					message: "You need more tokens to perform this action.",
+					variant: "error",
+					duration: 6000
+				})
+			}
+		} finally {
+			setIsLoading(false)
 		}
-
-		setIsLoading(false)
 	}
 
 	async function sendChatSession(session_id: number, content: string) {
@@ -77,11 +93,25 @@ export function useHomePageState() {
 				};
 			});
 			cleanTextInput()
-		} catch {
+		} catch (e: any) {
+			let errorCode = "default"
+			try {
+				errorCode = e.response.data.detail.error_code
+			} catch {
 
+			}
+
+			if (errorCode == 'insufficient_tokens') {
+				toast({
+					title: "Insufficient Tokens",
+					message: "You need more tokens to perform this action.",
+					variant: "error",
+					duration: 6000
+				})
+			}
+		} finally {
+			setIsLoading(false)
 		}
-
-		setIsLoading(false)
 	}
 
 	async function sendMessage(content: string) {
@@ -119,24 +149,24 @@ export function useHomePageState() {
 			socketRef.current = ws
 
 			ws.onopen = () => {
-				console.log("WebSocket connected ✅")
+				// console.log("WebSocket connected ✅")
 				retryCountRef.current = 0
 			}
 
 			ws.onclose = () => {
-				console.log("WebSocket disconnected 🔌")
+				// console.log("WebSocket disconnected 🔌")
 
 				if (!isMounted) return
 
 				if (retryCountRef.current < maxRetries) {
 					retryCountRef.current += 1
-					console.log(`Retrying... (${retryCountRef.current})`)
+					// console.log(`Retrying... (${retryCountRef.current})`)
 
 					setTimeout(() => {
 						connect()
 					}, 2000)
 				} else {
-					console.log("Max retry reached ❌")
+					// console.log("Max retry reached ❌")
 				}
 			}
 
@@ -156,7 +186,7 @@ export function useHomePageState() {
 			isMounted = false
 
 			if (socketRef.current) {
-				console.log("Cleaning up WebSocket 🧹")
+				// console.log("Cleaning up WebSocket 🧹")
 				socketRef.current.close()
 			}
 		}
@@ -167,7 +197,7 @@ export function useHomePageState() {
 			const payload = JSON.parse(event.data)
 
 			if (payload?.action === "reload_history") {
-				console.log("Trigger reload history 🚀")
+				// console.log("Trigger reload history 🚀")
 				chatbot.loadChatSessions()
 			} else if (payload?.action == "update_history") {
 				chatbot.setChatSessions((prev) =>
@@ -178,7 +208,7 @@ export function useHomePageState() {
 					)
 				)
 			} else if (payload?.action == "update_message") {
-				console.log(payload)
+				// console.log(payload)
 
 				setChatSession((prev) => {
 					if (!prev) return prev
@@ -201,8 +231,8 @@ export function useHomePageState() {
 					}
 				})
 			} else if (payload?.action == "update_thinking") {
-				console.log(payload)
-				console.log(chatbot.activeHistoryIdRef.current)
+				// console.log(payload)
+				// console.log(chatbot.activeHistoryIdRef.current)
 
 				if (chatbot.activeHistoryIdRef.current == payload?.session_id) {
 					setThinkingText(payload?.text)
