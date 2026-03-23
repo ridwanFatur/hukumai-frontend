@@ -1,3 +1,4 @@
+import MobileMenuButton from "@/components/MobileMenuButton";
 import ProfilePageProvider, { useProfilePage } from "./profile-page-context";
 
 export default function ProfilePage() {
@@ -13,6 +14,8 @@ function _ProfilePage() {
 
 	return (
 		<div className="w-full h-full relative flex flex-col bg-linear-to-b from-slate-950 to-slate-900 border-l border-white/5 overflow-hidden">
+			<MobileMenuButton />
+
 			<div className="absolute inset-0 pointer-events-none">
 				<div className="absolute -top-20 left-1/2 -translate-x-1/2 w-100 h-75 bg-indigo-600/10 rounded-full blur-[100px]" />
 				<div className="absolute -bottom-15 -right-10 w-70 h-50 bg-cyan-500/8 rounded-full blur-[80px]" />
